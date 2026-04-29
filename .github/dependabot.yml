@@ -4,6 +4,20 @@ updates:
   directory: "/"
   schedule:
     interval: weekly
+  open-pull-requests-limit: 3
+  groups:
+    minor-and-patch:
+      update-types:
+      - "minor"
+      - "patch"
+  ignore:
+    - dependency-name: "*"
+      update-types:
+        - "version-update:semver-major"
+- package-ecosystem: "npm"
+  directory: "/"
+  schedule:
+    interval: "weekly"
   open-pull-requests-limit: 10
 - package-ecosystem: github-actions
   directory: "/"
