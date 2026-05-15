@@ -169,3 +169,6 @@ Layout/IndentationWidth:
 
 Style/FrozenStringLiteralComment:
   Enabled: true
+
+StringLiterals:
+  EnforcedStyle: single_quotes
