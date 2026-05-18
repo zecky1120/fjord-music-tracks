@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root "home#index"
 
@@ -6,4 +8,5 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :sessions, only: %i[create destroy]
+  resources :users, only: %i[show]
 end
