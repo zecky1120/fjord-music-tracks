@@ -29,7 +29,11 @@
   <% end %>
   <header>
     <% if current_user %>
-      <%= image_tag current_user.avator_url %>
+      <% if current_user.avator_url.presence %>
+        <%= image_tag current_user.avator_url %>
+      <% else %>
+        画像はないときの処理を書く（後ほど）
+      <% end %>
       <%= current_user.name %>
       <%= link_to "ログアウト", logout_path %>
       <%= link_to "ユーザー詳細", user_path(current_user) %>
