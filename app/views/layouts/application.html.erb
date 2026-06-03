@@ -28,6 +28,7 @@
     <%= notice %>
   <% end %>
   <header>
+    <%= link_to "トップページ", root_path %>
     <% if current_user %>
       <% if current_user.avator_url.presence %>
         <%= image_tag current_user.avator_url %>
