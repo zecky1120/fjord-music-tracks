@@ -1,6 +1,12 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-
-<% @users.each do |user| %>
-  <div><%= user.name %></div>
+<% if current_user %>
+  <h1>今日の一曲</h1>
+  <p>Find me in app/views/home/index.html.erb</p>
+  <% @users.each do |user| %>
+    <div><%= user.name %></div>
+  <% end %>
+<% else %>
+  <h1>LOGO</h1>
+  <p>好きな曲を、新しいコミュニティへ繋げる。</p>
+  <p>フィヨルドブートキャンプ専用のDiscord連携サービスです。<br>「今日の一曲」チャンネルに投稿されたYouTubeの曲を、本サービスでは、一覧表示したりメンバーごとの曲リストを見ることが出来るサービスです!</p>
+  <%= button_to "discordでログイン", "/auth/discord", method: :post, data: { turbo: false } %>
 <% end %>
