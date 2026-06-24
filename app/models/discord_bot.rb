@@ -10,11 +10,11 @@ class DiscordBot
   bot = Discordrb::Bot.new(
     client_id: CLIENT_ID,
     token: TOKEN
-    )
+  )
 
-    bot.message do |event|
-      event.send_message('Hellooooo.')
-    end
+  bot.message do |event|
+    event.send_message('Hellooooo.')
+  end
 
-    bot.run
+  bot.run
 end

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module SessionsHelper
   def current_user
     return unless (user_id = session[:user_id])
 
-    @current_user ||= User.find_by(id: user_id)
+    User.find_by(id: user_id)
   end
 
   def login(user)
@@ -11,6 +13,5 @@ module SessionsHelper
 
   def logout
     session.delete(:user_id)
-    @current_user = nil
   end
 end
