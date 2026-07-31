@@ -12,7 +12,7 @@ class DiscordBot
 
   def run
     @bot.message do |event|
-      p DiscordMessage.new.call(event)
+      DiscordMessage.new.call(event)
     end
     @bot.run
   end

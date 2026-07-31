@@ -512,6 +512,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  addressable (>= 2.9)
   bootsnap
   brakeman
   bundler-audit

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'addressable/uri'
+
 class DiscordMessage
   def call(event)
     @content = event.content
