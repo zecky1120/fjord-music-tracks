@@ -29,7 +29,7 @@ group :development, :test do
   gem 'debug', platforms: %i[ mri windows ], require: 'debug/prelude'
   gem 'bundler-audit', require: false
   gem 'brakeman', require: false
-  gem 'rubocop', '~> 1.82', require: false
+  gem 'rubocop', '~> 1.88', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
