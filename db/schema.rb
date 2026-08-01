@@ -10,13 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_08_125910) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_24_123505) do
   create_table "users", force: :cascade do |t|
-    t.string "avator_url"
+    t.string "avatar_url"
     t.datetime "created_at", null: false
     t.string "name"
     t.string "provider"
     t.string "uid"
     t.datetime "updated_at", null: false
   end
+
+  create_table "videos", force: :cascade do |t|
+    t.text "caption"
+    t.datetime "created_at", null: false
+    t.string "discord_channel_id"
+    t.string "discord_message_id"
+    t.text "title"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.string "youtube_id"
+    t.index ["user_id"], name: "index_videos_on_user_id"
+  end
+
+  add_foreign_key "videos", "users"
 end

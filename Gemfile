@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gem 'rails', '~> 8.1.2'
@@ -31,6 +33,7 @@ group :development, :test do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'multi_json'
 end
 
 group :development do
@@ -45,3 +48,6 @@ end
 gem 'omniauth'
 gem 'omniauth-discord'
 gem 'omniauth-rails_csrf_protection'
+gem 'discordrb'
+gem 'addressable', '>= 2.9'
+gem 'google-api-client', '>= 0.11.1'
