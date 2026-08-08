@@ -1,22 +1,25 @@
 # frozen_string_literal: true
 
 require 'addressable/uri'
+require 'google/apis/youtube_v3'
 
 class DiscordMessage
   def call(event)
     @content = event.content
     {
       caption: caption,
-      youtube_id: youtube_id,
       discord_message_id: event.message.id,
-      discord_channel_id: event.channel.id
+      discord_channel_id: event.channel.id,
+      youtube_id: youtube_id,
+      title: title,
+      user_uid: event.message.author.id
     }
   end
 
   private
 
   def caption
-    @content.gsub(URI::DEFAULT_PARSER.make_regexp, '').strip
+    @content.gsub(URI::DEFAULT_PARSER.make_regexp, '').strip.presence
   end
 
   def youtube_id
@@ -47,5 +50,16 @@ class DiscordMessage
 
   def playlist
     uri.query_values['list']
+  end
+
+  def youtube
+    service = Google::Apis::YoutubeV3::YouTubeService.new
+    service.key = Rails.application.credentials.youtube[:api_key]
+    service
+  end
+
+  def title
+    response = youtube.list_videos('snippet', id: youtube_id)
+    response.items.first.snippet.title
   end
 end
