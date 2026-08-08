@@ -7,7 +7,7 @@ class User < ApplicationRecord
     find_or_create_by(uid: discord_auth.uid) do |user|
       user.update(
         name: discord_auth.info.name,
-        avator_url: discord_auth.info.image,
+        avatar_url: discord_auth.info.image,
         uid: discord_auth.uid,
         provider: discord_auth.provider
       )
