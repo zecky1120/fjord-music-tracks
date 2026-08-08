@@ -1,8 +1,20 @@
 <% if current_user %>
   <h1>今日の一曲</h1>
   <p>Find me in app/views/home/index.html.erb</p>
-  <% @users.each do |user| %>
-    <div><%= user.name %></div>
+  <hr>
+  <% if @videos.present? %>
+    <% @videos.each do |video| %>
+      <%= link_to "https://www.youtube.com/watch?v=#{video.youtube_id}", target: "_blank", rel: "noopener noreferrer" do %>
+        <figure>
+          <img src="https://img.youtube.com/vi/<%= video.youtube_id %>/mqdefault.jpg" alt="">
+        </figure>
+        <div>キャプション: <%= video.caption %></div>
+        <div>動画タイトル: <%= video.title %></div>
+        <hr>
+      <% end %>
+    <% end %>
+  <% else %>
+  投稿はまだありません
   <% end %>
 <% else %>
   <h1>LOGO</h1>
