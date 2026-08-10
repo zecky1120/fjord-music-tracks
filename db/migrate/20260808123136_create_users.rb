@@ -2,8 +2,7 @@ class CreateUsers < ActiveRecord::Migration[8.1]
   def change
     create_table :users do |t|
       t.string :name
-      t.string :profile
-      t.string :avator_url
+      t.string :avatar_url
       t.string :uid
       t.string :provider
 

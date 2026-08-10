@@ -12,7 +12,8 @@ class DiscordBot
 
   def run
     @bot.message do |event|
-      DiscordMessage.new.call(event)
+      discord_message = DiscordMessage.new.call(event)
+      Video.create_video_info(discord_message)
     end
     @bot.run
   end

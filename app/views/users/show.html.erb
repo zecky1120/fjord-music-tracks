@@ -1,2 +1,18 @@
 <h1><%= @user.name %></h1>
 ここに自分が投稿した音楽が表示されていく
+<% if @videos.present? %>
+  <% @videos.each do |video| %>
+    <%= link_to "https://www.youtube.com/watch?v=#{video.youtube_id}", target: "_blank", rel: "noopener noreferrer" do %>
+      <figure>
+        <img src="https://img.youtube.com/vi/<%= video.youtube_id %>/mqdefault.jpg" alt="">
+      </figure>
+      <div>ユーザーネーム: <%= video.user.name %></div>
+      <div>キャプション: <%= video.caption %></div>
+      <div>動画タイトル: <%= video.title %></div>
+      <time>投稿日: <%= video.created_at.strftime('%Y/%m/%d') %></time>
+      <hr>
+    <% end %>
+  <% end %>
+<% else %>
+  投稿はまだありません
+<% end %>
