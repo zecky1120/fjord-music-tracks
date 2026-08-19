@@ -4,7 +4,7 @@ class CreateVideos < ActiveRecord::Migration[8.1]
       t.references :user, null: false, foreign_key: true
       t.text :title
       t.text :caption
-      t.string :youtube_id
+      t.string :url
       t.string :discord_message_id
       t.string :discord_channel_id
 
