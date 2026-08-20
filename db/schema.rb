@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_19_111922) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_20_110153) do
   create_table "users", force: :cascade do |t|
     t.string "avatar_url"
     t.datetime "created_at", null: false
@@ -25,7 +25,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_111922) do
     t.datetime "created_at", null: false
     t.string "discord_channel_id"
     t.string "discord_message_id"
-    t.text "title"
+    t.string "thumbnail"
+    t.string "title"
     t.datetime "updated_at", null: false
     t.string "url"
     t.integer "user_id", null: false
