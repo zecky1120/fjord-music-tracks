@@ -32,9 +32,9 @@ class DiscordMessage
   end
 
   def youtube_id
-    if url.include?('watch?v=')
+    if movie?
       with_v
-    elsif url.include?('playlist?list=')
+    elsif playlist?
       playlist
     else
       without_v
@@ -60,22 +60,30 @@ class DiscordMessage
   end
 
   def title
-    response =
-      if playlist
-        youtube.list_playlists('snippet,contentDetails', id: youtube_id)
-      else
-        youtube.list_videos('snippet', id: youtube_id)
-      end
-    response.items.first.snippet.title
+    if playlist?
+      youtube_list_playlists_info.items.first.snippet.title
+    else
+      youtube_list_videos_info.items.first.snippet.title
+    end
   end
 
   def thumbnail
-    response =
-      if playlist
-        youtube.list_playlists('snippet,contentDetails', id: youtube_id)
-      else
-        youtube.list_videos('snippet', id: youtube_id)
-      end
-    response.items.first.snippet.thumbnails.medium.url
+    playlist? ? nil : youtube_list_videos_info.items.first.snippet.thumbnails.medium.url
+  end
+
+  def playlist?
+    url.include?('playlist?list=')
+  end
+
+  def movie?
+    url.include?('watch?v=')
+  end
+
+  def youtube_list_videos_info
+    youtube.list_videos('snippet', id: youtube_id)
+  end
+
+  def youtube_list_playlists_info
+    youtube.list_playlists('snippet,contentDetails', id: youtube_id)
   end
 end
