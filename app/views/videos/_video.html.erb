@@ -1,0 +1,13 @@
+<% if video.thumbnail.present? %>
+  <figure>
+    <img src="<%= video.thumbnail %>" alt="<%= video.title %>">
+  </figure>
+<% else %>
+<% end %>
+<div>ユーザーネーム: <%= link_to "#{video.user.name}", user_path(video.user) %></div>
+<% if video.caption.present? %>
+  <div>キャプション: <%= video.caption %></div>
+<% end %>
+<div>動画名: <%= link_to "#{video.title}", "#{video.url}", target: "_blank", rel: "noopener noreferrer" %></div>
+<p><time>投稿日: <%= video.created_at.strftime('%Y/%m/%d') %></time></p>
+<hr>

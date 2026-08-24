@@ -3,19 +3,9 @@
   <p>Find me in app/views/home/index.html.erb</p>
   <hr>
   <% if @videos.present? %>
-    <% @videos.each do |video| %>
-      <%= link_to "https://www.youtube.com/watch?v=#{video.youtube_id}", target: "_blank", rel: "noopener noreferrer" do %>
-        <figure>
-          <img src="https://img.youtube.com/vi/<%= video.youtube_id %>/mqdefault.jpg" alt="">
-        </figure>
-        <div>ユーザーネーム: <%= video.user.name %></div>
-        <div>キャプション: <%= video.caption %></div>
-        <div>動画タイトル: <%= video.title %></div>
-        <hr>
-      <% end %>
-    <% end %>
+    <%= render @videos %>
   <% else %>
-  投稿はまだありません
+    投稿はまだありません
   <% end %>
 <% else %>
   <h1>LOGO</h1>
